@@ -21,7 +21,7 @@ function MainComponent() {
           className="real-time-heading"
           initial={{ opacity: 0, x: -500 }}
           animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 1, delay: 0.5 }}
+          transition={{ duration: 1, delay: 1 }}
         >
           Real Time.
         </motion.h1>
