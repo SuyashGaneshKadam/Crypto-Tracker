@@ -42,3 +42,11 @@ a{
   color: var(--white) !important;
   text-decoration: none;
 }
+
+/* To now allow images to be dragabble */
+img {
+  -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  -moz-user-drag: none;
+  -o-user-drag: none;
+  }
