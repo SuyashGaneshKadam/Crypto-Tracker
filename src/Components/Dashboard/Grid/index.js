@@ -4,22 +4,24 @@ import TrendingUpRoundedIcon from "@mui/icons-material/TrendingUpRounded";
 import TrendingDownRoundedIcon from "@mui/icons-material/TrendingDownRounded";
 import { Link } from "react-router-dom";
 import { hasBeenAdded } from "../../../Functions/hasBeenAdded";
-import {removeFromWatchlist} from "../../../Functions/removeFromWatchlist"
-import {addToWatchlist} from "../../../Functions/addToWatchList"
+import { removeFromWatchlist } from "../../../Functions/removeFromWatchlist";
+import { addToWatchlist } from "../../../Functions/addToWatchList";
 import { IconButton } from "@mui/material";
 import StarBorderRoundedIcon from "@mui/icons-material/StarBorderRounded";
 import StarRoundedIcon from "@mui/icons-material/StarRounded";
 
-function Grid({ coin, i, isWatchlistPage }) {
+function Grid({ coin, i, isWatchlistPage, setMyWatchlist }) {
   const [added, setAdded] = useState(hasBeenAdded(coin.id));
   return (
-    <Link to={`/coin/${coin.id}`}>
+    <Link
+      to={`/coin/${coin.id}`}
+      style={{ display: isWatchlistPage && !added && "none" }}
+    >
       <div
         key={i}
         className={`grid-container ${
           coin.price_change_percentage_24h < 0 && "grid-container-red"
         }`}
-        style={{display: isWatchlistPage && !added && "none"}}
       >
         <div className="info-flex">
           <img className="coin-logo" src={coin.image} />
@@ -31,8 +33,10 @@ function Grid({ coin, i, isWatchlistPage }) {
             onClick={(e) => {
               e.preventDefault();
               if (added) {
-                removeFromWatchlist(coin.id);
-                setAdded(false);
+                if (removeFromWatchlist(coin.id)) {
+                  setAdded(false);
+                  setMyWatchlist(JSON.parse(localStorage.getItem("watchlist")));
+                }
               } else {
                 addToWatchlist(coin.id);
                 setAdded(true);

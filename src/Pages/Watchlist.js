@@ -20,7 +20,7 @@ function WatchlistPage() {
   return (
     <div>
       <div style={{ minHeight: "90vh" }}>
-        {myWatchlist?.length == 0 || !coins1 ? (
+        {myWatchlist?.length == 0 ? (
           <div>
             <Header />
             <h1 style={{ textAlign: "center", marginBottom: "2rem" }}>
@@ -37,7 +37,7 @@ function WatchlistPage() {
         ) : (
           <div style={{ height: "95vh" }}>
             <Header />
-            <TabsComponent coins1={myWatchlist} isWatchlistPage={true} />
+            <TabsComponent setMyWatchlist={setMyWatchlist} isWatchlistPage={true} />
           </div>
         )}
       </div>

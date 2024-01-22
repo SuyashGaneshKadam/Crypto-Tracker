@@ -9,7 +9,7 @@ import Grid from "../Grid";
 import List from "../List";
 import allCoins from "../../../Data/Coins";
 
-export default function TabsComponent({ coins, isWatchlistPage }) {
+export default function TabsComponent({ coins, isWatchlistPage, setMyWatchlist }) {
   const [value, setValue] = useState("grid");
 
   const handleChange = (event, newValue) => {
@@ -49,6 +49,7 @@ export default function TabsComponent({ coins, isWatchlistPage }) {
                       coin={coin}
                       key={i}
                       isWatchlistPage={isWatchlistPage}
+                      setMyWatchlist={setMyWatchlist}
                     />
                   );
                 })
@@ -66,6 +67,7 @@ export default function TabsComponent({ coins, isWatchlistPage }) {
                       coin={coin}
                       key={i}
                       isWatchlistPage={isWatchlistPage}
+                      setMyWatchlist={setMyWatchlist}
                     />
                   );
                 })

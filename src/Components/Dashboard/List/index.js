@@ -11,15 +11,14 @@ import { addToWatchlist } from "../../../Functions/addToWatchList";
 import StarBorderRoundedIcon from "@mui/icons-material/StarBorderRounded";
 import StarRoundedIcon from "@mui/icons-material/StarRounded";
 
-function List({ coin, i, isWatchlistPage }) {
+function List({ coin, i, isWatchlistPage, setMyWatchlist }) {
   const [added, setAdded] = useState(hasBeenAdded(coin.id));
   return (
-    <Link to={`/coin/${coin.id}`}>
-      <tr
-        className="list-row"
-        key={i}
-        style={{ display: isWatchlistPage && !added && "none" }}
-      >
+    <Link
+      to={`/coin/${coin.id}`}
+      style={{ display: isWatchlistPage && !added && "none" }}
+    >
+      <tr className="list-row" key={i}>
         <Tooltip title="Logo" placement="bottom-start">
           <td className="td-image">
             <img className="coin-logo" src={coin.image} />
@@ -98,8 +97,10 @@ function List({ coin, i, isWatchlistPage }) {
             onClick={(e) => {
               e.preventDefault();
               if (added) {
-                removeFromWatchlist(coin.id);
-                setAdded(false);
+                if (removeFromWatchlist(coin.id)) {
+                  setAdded(false);
+                  setMyWatchlist(JSON.parse(localStorage.getItem("watchlist")));
+                }
               } else {
                 addToWatchlist(coin.id);
                 setAdded(true);
