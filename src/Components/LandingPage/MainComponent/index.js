@@ -5,6 +5,7 @@ import iphone from "../../../Assets/iphone.png";
 import gradient from "../../../Assets/gradient.png";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
+import { RWebShare } from "react-web-share";
 
 function MainComponent() {
   const navigate = useNavigate();
@@ -42,8 +43,16 @@ function MainComponent() {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 1, delay: 0.75 }}
         >
-          <Button text={"Dashboard"} onClick={() => navigate("/dashboard")}/>
-          <Button text={"Share"} outlined={true} />
+          <Button text={"Dashboard"} onClick={() => navigate("/dashboard")} />
+          <RWebShare
+            data={{
+              text: "CryptoTracker made using React JS",
+              url: "https://crypto-tracker-rose-kappa.vercel.app/",
+              title: "CrytoTracker.",
+            }}
+          >
+            <Button text={"Share 🔗"} onClick={() => {}} outlined={true} />
+          </RWebShare>
         </motion.div>
       </div>
       <div className="phone-container">

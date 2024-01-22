@@ -99,7 +99,11 @@ function List({ coin, i, isWatchlistPage, setMyWatchlist }) {
               if (added) {
                 if (removeFromWatchlist(coin.id)) {
                   setAdded(false);
-                  setMyWatchlist(JSON.parse(localStorage.getItem("watchlist")));
+                  if (isWatchlistPage) {
+                    setMyWatchlist(
+                      JSON.parse(localStorage.getItem("watchlist"))
+                    );
+                  }
                 }
               } else {
                 addToWatchlist(coin.id);

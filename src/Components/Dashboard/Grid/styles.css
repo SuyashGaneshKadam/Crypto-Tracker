@@ -1,5 +1,5 @@
 .grid-container{
-    width: 300px;
+    width: 290px;
     background-color: var(--darkgrey);
     border: 2px solid var(--darkgrey);
     border-radius: 0.75rem;
@@ -18,7 +18,7 @@
 
 .info-flex{
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-between;
     align-items: center;
     gap: 1rem;
     margin: 1.5rem;
