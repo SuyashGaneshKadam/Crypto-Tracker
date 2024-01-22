@@ -31,7 +31,6 @@ function WatchlistPage() {
               <Button
                 text={"Dashboard"}
                 onClick={() => navigate("/dashboard")}
-                outlined={true}
               />
             </div>
           </div>
