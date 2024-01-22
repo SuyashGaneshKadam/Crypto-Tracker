@@ -7,8 +7,9 @@ import TabPanel from "@mui/lab/TabPanel";
 import { ThemeProvider, createTheme } from "@mui/material";
 import Grid from "../Grid";
 import List from "../List";
+import allCoins from "../../../Data/Coins";
 
-export default function TabsComponent({ coins }) {
+export default function TabsComponent({ coins, isWatchlistPage }) {
   const [value, setValue] = useState("grid");
 
   const handleChange = (event, newValue) => {
@@ -41,16 +42,36 @@ export default function TabsComponent({ coins }) {
         </TabList>
         <TabPanel value="grid">
           <div className="grid-flex">
-            {coins.map((coin, i) => {
-              return <Grid coin={coin} key={i} />;
-            })}
+            {isWatchlistPage
+              ? allCoins.map((coin, i) => {
+                  return (
+                    <Grid
+                      coin={coin}
+                      key={i}
+                      isWatchlistPage={isWatchlistPage}
+                    />
+                  );
+                })
+              : coins.map((coin, i) => {
+                  return <Grid coin={coin} key={i} />;
+                })}
           </div>
         </TabPanel>
         <TabPanel value="list">
           <table className="list-table">
-            {coins.map((coin, i) => {
-              return <List coin={coin} key={i} />;
-            })}
+            {isWatchlistPage
+              ? allCoins.map((coin, i) => {
+                  return (
+                    <List
+                      coin={coin}
+                      key={i}
+                      isWatchlistPage={isWatchlistPage}
+                    />
+                  );
+                })
+              : coins.map((coin, i) => {
+                  return <List coin={coin} key={i} />;
+                })}
           </table>
         </TabPanel>
       </TabContext>

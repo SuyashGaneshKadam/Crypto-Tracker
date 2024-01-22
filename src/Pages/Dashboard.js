@@ -4,17 +4,17 @@ import TabsComponent from "../Components/Dashboard/Tabs";
 import axios from "axios";
 import Search from "../Components/Dashboard/Search";
 import PaginationComponent from "../Components/Dashboard/Pagination";
-// import coins from "../Data/Coins";
+import coins from "../Data/Coins";
 import Loader from "../Components/Common/Loader";
 import BackToTop from "../Components/Common/BackToTop";
 import { get100Coins } from "../Functions/get100Coins";
 
 function DashboardPage() {
-  const [coins, setCoins] = useState([]);
+  // const [coins, setCoins] = useState([]);
   const [paginatedCoins, setPaginatedCoins] = useState(coins.slice(0, 10));
   const [search, setSearch] = useState("");
   const [page, setPage] = useState(1);
-  const [isLoading, setIsLoading] = useState(true); //Change to true when using API call & Change to false when not using API call
+  const [isLoading, setIsLoading] = useState(false); //Change to true when using API call & Change to false when not using API call
 
   const handlePageChange = (event, value) => {
     setPage(value);
@@ -32,18 +32,18 @@ function DashboardPage() {
       item.symbol.toLowerCase().includes(search.toLowerCase())
   );
 
-  useEffect(() => {
-    getData();
-  }, []);
+  // useEffect(() => {
+  //   getData();
+  // }, []);
 
-  const getData = async () => {
-    const myCoins = await get100Coins();
-    if (myCoins) {
-      setCoins(myCoins);
-      setPaginatedCoins(myCoins.slice(0, 10));
-      setIsLoading(false);
-    }
-  };
+  // const getData = async () => {
+  //   const myCoins = await get100Coins();
+  //   if (myCoins) {
+  //     setCoins(myCoins);
+  //     setPaginatedCoins(myCoins.slice(0, 10));
+  //     setIsLoading(false);
+  //   }
+  // };
 
   return (
     <>

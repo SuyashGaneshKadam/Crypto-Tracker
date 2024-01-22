@@ -1,15 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
 import "./styles.css";
 import TrendingUpRoundedIcon from "@mui/icons-material/TrendingUpRounded";
 import TrendingDownRoundedIcon from "@mui/icons-material/TrendingDownRounded";
-import { Tooltip } from "@mui/material";
+import { IconButton, Tooltip } from "@mui/material";
 import { convertNumber } from "../../../Functions/convertNumber";
 import { Link } from "react-router-dom";
+import { hasBeenAdded } from "../../../Functions/hasBeenAdded";
+import { removeFromWatchlist } from "../../../Functions/removeFromWatchlist";
+import { addToWatchlist } from "../../../Functions/addToWatchList";
+import StarBorderRoundedIcon from "@mui/icons-material/StarBorderRounded";
+import StarRoundedIcon from "@mui/icons-material/StarRounded";
 
-function List({ coin }) {
+function List({ coin, i, isWatchlistPage }) {
+  const [added, setAdded] = useState(hasBeenAdded(coin.id));
   return (
     <Link to={`/coin/${coin.id}`}>
-      <tr className="list-row">
+      <tr
+        className="list-row"
+        key={i}
+        style={{ display: isWatchlistPage && !added && "none" }}
+      >
         <Tooltip title="Logo" placement="bottom-start">
           <td className="td-image">
             <img className="coin-logo" src={coin.image} />
@@ -79,6 +89,37 @@ function List({ coin }) {
               ${convertNumber(coin.market_cap)}
             </p>
           </td>
+        </Tooltip>
+        <Tooltip
+          title={added ? "Remove from Watchlist " : "Add to Watchlist"}
+          placement="bottom-end"
+        >
+          <IconButton
+            onClick={(e) => {
+              e.preventDefault();
+              if (added) {
+                removeFromWatchlist(coin.id);
+                setAdded(false);
+              } else {
+                addToWatchlist(coin.id);
+                setAdded(true);
+              }
+            }}
+          >
+            {added ? (
+              <StarRoundedIcon
+                className={`watchlist-icon ${
+                  coin.price_change_percentage_24h < 0 && "watchlist-icon-red"
+                } `}
+              />
+            ) : (
+              <StarBorderRoundedIcon
+                className={`watchlist-icon ${
+                  coin.price_change_percentage_24h < 0 && "watchlist-icon-red"
+                } `}
+              />
+            )}
+          </IconButton>
         </Tooltip>
       </tr>
     </Link>
