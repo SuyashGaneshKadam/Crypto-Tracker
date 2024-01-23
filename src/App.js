@@ -5,10 +5,13 @@ import DashboardPage from './Pages/Dashboard';
 import CoinPage from './Pages/Coin';
 import ComparePage from './Pages/ComparePage';
 import WatchlistPage from './Pages/Watchlist';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   return (
     <div className="App">
+      <ToastContainer />
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<HomePage />} />

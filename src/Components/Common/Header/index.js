@@ -21,7 +21,7 @@ function Header() {
             <p className="link">Watchlist</p>
         </Link>
         <Link to="/dashboard">
-            <Button text={"Dashboard"} onClick={() => console.log("Btn Clicked")}/>
+            <Button text={"Dashboard"} onClick={() => {}}/>
         </Link>
       </div>
       <div className="mobile-drawer">

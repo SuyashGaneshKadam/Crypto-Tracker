@@ -26,16 +26,21 @@ export const removeFromWatchlist = (id) => {
     );
     return true;
   } else {
-    toast.error("Couldn't remove the coin from the watchlist!", {
-      position: "top-right",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "light",
-      transition: Bounce,
-    });
+    toast.error(
+      `Couldn't remove ${
+        id.slice(0, 1).toUpperCase() + id.slice(1)
+      } from the watchlist!`,
+      {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        transition: Bounce,
+      }
+    );
   }
 };

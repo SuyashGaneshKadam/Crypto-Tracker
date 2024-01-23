@@ -1,4 +1,5 @@
-import { toast } from "react-toastify";
+import { Bounce, toast } from "react-toastify";
+// import 'react-toastify/dist/ReactToastify.css';
 
 export const addToWatchlist = (id) => {
   let items = localStorage.getItem("watchlist");
@@ -15,7 +16,7 @@ export const addToWatchlist = (id) => {
   toast.success(
     `${id.slice(0, 1).toUpperCase() + id.slice(1)} - Added To The Watchlist!`,
     {
-      position: "bottom-right",
+      position: "top-right",
       autoClose: 5000,
       hideProgressBar: false,
       closeOnClick: true,
@@ -23,6 +24,7 @@ export const addToWatchlist = (id) => {
       draggable: true,
       progress: undefined,
       theme: "light",
+      transition: Bounce,
     }
   );
 };
