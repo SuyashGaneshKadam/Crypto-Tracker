@@ -21,20 +21,20 @@ function List({ coin, i, isWatchlistPage, setMyWatchlist }) {
       <tr className="list-row" key={i}>
         <Tooltip title="Logo" placement="bottom-start">
           <td className="td-image">
-            <img className="coin-logo" src={coin.image} />
+            <img className="coin-logo td-coin-logo" src={coin.image} />
           </td>
         </Tooltip>
         <Tooltip title="Coin Info" placement="bottom-start">
           <td>
             <div className="name-col">
-              <p className="coin-symbol">{coin.symbol}</p>
-              <p className="coin-name">{coin.name}</p>
+              <p className="coin-symbol td-coin-symbol">{coin.symbol}</p>
+              <p className="coin-name td-coin-name">{coin.name}</p>
             </div>
           </td>
         </Tooltip>
         <Tooltip title="Price change in 24 hrs" placement="bottom-start">
           {coin.price_change_percentage_24h > 0 ? (
-            <td className="chip-flex">
+            <td className="chip-flex td-chip-flex">
               <div className="price-chip">
                 {coin.price_change_percentage_24h.toFixed(2)}%
               </div>
@@ -43,7 +43,7 @@ function List({ coin, i, isWatchlistPage, setMyWatchlist }) {
               </div>
             </td>
           ) : (
-            <td className="chip-flex">
+            <td className="chip-flex td-chip-flex">
               <div className="price-chip chip-red">
                 {coin.price_change_percentage_24h.toFixed(2)}%
               </div>
@@ -56,7 +56,7 @@ function List({ coin, i, isWatchlistPage, setMyWatchlist }) {
         <Tooltip title="Current Price">
           <td>
             <h3
-              className="coin-price td-center-align"
+              className="coin-price td-center-align td-coin-price"
               style={{
                 color:
                   coin.price_change_percentage_24h < 0
@@ -69,8 +69,8 @@ function List({ coin, i, isWatchlistPage, setMyWatchlist }) {
           </td>
         </Tooltip>
         <Tooltip title="Total Volume" placement="bottom-end">
-          <td>
-            <p className="total_volume td-right-align td-total-volume">
+          <td className="td-total-volume">
+            <p className="total_volume td-right-align">
               ${coin.total_volume.toLocaleString()}
             </p>
           </td>
@@ -115,13 +115,13 @@ function List({ coin, i, isWatchlistPage, setMyWatchlist }) {
               <StarRoundedIcon
                 className={`watchlist-icon ${
                   coin.price_change_percentage_24h < 0 && "watchlist-icon-red"
-                } `}
+                } td-watchlist-icon`}
               />
             ) : (
               <StarBorderRoundedIcon
                 className={`watchlist-icon ${
                   coin.price_change_percentage_24h < 0 && "watchlist-icon-red"
-                } `}
+                } td-watchlist-icon`}
               />
             )}
           </IconButton>

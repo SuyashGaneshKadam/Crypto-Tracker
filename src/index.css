@@ -82,6 +82,26 @@ img {
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  flex-wrap: wrap;
   gap: 2rem;
   margin: 1.5rem;
+}
+
+@media screen and (max-width:500px) {
+  .grey-wrapper {
+    width: 85%;
+    margin: auto;
+    padding: 1rem 1rem;
+  }
+}
+
+@media screen and (max-width: 520px) {
+  .coins-days-flex{
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+  }
+  .grey-wrapper {
+    margin-top: 1rem;
+  }
 }

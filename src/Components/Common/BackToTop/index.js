@@ -14,8 +14,8 @@ function BackToTop() {
     mybutton = document.getElementById("myBtn");
     if (mybutton) {
       if (
-        document.body.scrollTop > 500 ||
-        document.documentElement.scrollTop > 500
+        document.body.scrollTop > 250 ||
+        document.documentElement.scrollTop > 250
       ) {
         mybutton.style.display = "flex";
       } else {

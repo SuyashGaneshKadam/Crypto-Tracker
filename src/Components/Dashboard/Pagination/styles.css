@@ -4,3 +4,10 @@
     align-items: center;
     margin-bottom: 2.5rem;
 }
+
+@media screen and (max-width:525px) {
+    .pagination-component{
+        width: 80%;
+        margin-bottom: 1.5rem;
+    }
+}
