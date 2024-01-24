@@ -4,10 +4,9 @@ import TemporaryDrawer from "./drawer";
 import Button from "../Button";
 import { Link } from "react-router-dom";
 import { Switch } from "@mui/material";
-import { toast } from "react-toastify";
+import { Bounce, toast } from "react-toastify";
 
 function Header() {
-
   const [darkMode, setDarkMode] = useState(
     localStorage.getItem("theme") == "dark" ? true : false
   );
@@ -22,12 +21,25 @@ function Header() {
 
   const changeMode = () => {
     setDarkMode(!darkMode);
-    toast.success("Theme Changed!");
     const mode = localStorage.getItem("theme");
     if (mode == "dark") {
       setLight();
+      toast.success("Theme Changed!", {
+        closeOnClick: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        transition: Bounce,
+      });
     } else {
       setDark();
+      toast.success("Theme Changed!", {
+        closeOnClick: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+        transition: Bounce,
+      });
     }
   };
 
